@@ -1,4 +1,5 @@
 import React from "react";
+import Button from '@mui/material/Button';
 
 function Header() {
     return (
@@ -8,7 +9,7 @@ function Header() {
                         <span>Social Pets</span>
                     </div>
                     <div>
-                        <button>Novo Post</button>
+                        <Button color="primary" variant="contained">Novo Post</Button>
                         <span>img1</span>
                         <span>img2</span>
                     </div>
