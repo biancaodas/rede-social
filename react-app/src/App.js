@@ -1,10 +1,9 @@
+import React from "react";
+import Home from './home/index'
+
 
 function App() {
-  return (
-    <div>
-      <h1>Hello</h1>
-    </div>
-  );
+  return <Home></Home>    
 }
 
 export default App;
