@@ -7,11 +7,11 @@ import Feed from './components/feed';
 function Home() {
     return (
         <div>
-            <div className='header'>
+            <div>
                 <Header />
             </div>
             <div>
-                <main className='feed'>
+                <main>
                 <Feed />
                 </main>
             </div>

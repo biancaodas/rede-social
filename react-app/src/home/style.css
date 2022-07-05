@@ -1,19 +1,24 @@
+/*CSS HEADER-HOME*/
 .header {
-    background: red;
+    background: #fff;
     width: 100%;
-    position: fixed;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height:  64px;
-    padding: 0 24px;
+    margin: 20px auto;
 }
 
+.img {
+    width: 100px;
+}
+
+
+
+/*CSS FEED-HOME*/
 .feed {
-    background: blue;
+    background: #fff;
     width: 100%;
     height: 100vh;
     display: flex;
     width: 1200px;
     margin: 0 auto;
 }
+

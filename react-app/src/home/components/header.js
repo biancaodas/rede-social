@@ -3,9 +3,9 @@ import '../style.css';
 
 function Header() {
     return (
-        <div>
+        <div className='header'>
             <div>
-                <a href='/'>Social Pets</a>
+                <img className='img' src='./images/logo.png' alt='logo'></img>
             </div>
             <div>
                 <button>Pagina inicial</button>
