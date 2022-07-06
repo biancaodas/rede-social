@@ -10,6 +10,7 @@ import Box from '@mui/material/Box';
 
 function Header() {
     return (
+<<<<<<< HEAD
         <AppBar position='fixed' color='inherit'>
             <Toolbar>
                 <a href='/'><img src='./images/logo.png' alt='logo' className='img'></img></a>
@@ -26,6 +27,19 @@ function Header() {
                 </Box>
             </Toolbar>
         </AppBar>
+=======
+        <div className='header'>
+            <div>
+                <img className='img' src='./images/logo.png' alt='logo'></img>
+            </div>
+            <div>
+                <button>Pagina inicial</button>
+                <input type='text' placeholder='Pesquisar'></input>
+                <button>Msg</button>
+                <button>Menu</button>
+            </div>
+        </div>
+>>>>>>> main
     );
 }
 
