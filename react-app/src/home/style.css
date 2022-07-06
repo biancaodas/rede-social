@@ -1,8 +1,6 @@
 /*CSS HEADER*/
 .header {
     display: flex;
-    justify-content: space-between;
-    background-color: aquamarine;
 }
 .img {
     width: 150px;
@@ -10,7 +8,22 @@
 .input {
     border-radius: 15px;
 }
+.icons {
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    
+}
+.fab {
+    margin-left: 30px;
+}
+.avatar {
+    margin-left: 50px;
+}
 /*CSS FEED*/
 .feed {
-    background-color: blueviolet;
+    height: 100vh;
+    margin: 100px;
+    justify-content: center;
 }

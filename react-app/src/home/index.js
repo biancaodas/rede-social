@@ -10,11 +10,9 @@ function Home() {
             <div className='header'>
                 <Header/>
             </div>
-            <div>
-                <main className='feed'>
+            <main className='feed'>
                 <Feed/>
-                </main>
-            </div>
+            </main>
         </div>
     );
 }
