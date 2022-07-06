@@ -6,19 +6,13 @@ import postCard from './postCard';
 
 function Feed() {
     return (
-<<<<<<< HEAD
         <main>
             <Container maxWidth='lg'>
                 <Box display='flex'>
-                <postCard/>
+                    <postCard/>
                 </Box>
             </Container>
         </main>
-=======
-        <div className='feed'>
-            feed
-        </div>
->>>>>>> main
     )
 }
 

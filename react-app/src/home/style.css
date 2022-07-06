@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-/*CSS HEADER*/
+/*CSS HEADER-HOME*/
 .header {
     display: flex;
 }
@@ -14,7 +13,6 @@
     display: flex;
     align-items: center;
     flex-grow: 1;
-    
 }
 .fab {
     margin-left: 30px;
@@ -22,35 +20,11 @@
 .avatar {
     margin-left: 50px;
 }
-/*CSS FEED*/
+
+/*CSS FEED-HOME*/
 .feed {
     height: 100vh;
     margin: 100px;
     justify-content: center;
 }
-=======
-/*CSS HEADER-HOME*/
-.header {
-    background: #fff;
-    width: 100%;
-    display: flex;
-    margin: 20px auto;
-}
 
-.img {
-    width: 100px;
-}
-
-
-
-/*CSS FEED-HOME*/
-.feed {
-    background: #fff;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    width: 1200px;
-    margin: 0 auto;
-}
-
->>>>>>> main
