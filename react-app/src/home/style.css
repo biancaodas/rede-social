@@ -25,6 +25,13 @@
 .feed {
     height: 100vh;
     margin: 100px;
-    justify-content: center;
+}
+.card {
+    margin-bottom: 15px;
+}
+.image {
+    height: 300px;
+    width: 100%;
+    max-width: 100%;
 }
 
