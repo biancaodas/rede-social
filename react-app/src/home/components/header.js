@@ -1,19 +1,22 @@
 import React from 'react';
-import '../style.css';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
 
 function Header() {
     return (
-        <div>
-            <div>
-                <a href='/'>Social Pets</a>
-            </div>
-            <div>
-                <button>Pagina inicial</button>
-                <input type='text' placeholder='Pesquisar'></input>
-                <button>Msg</button>
-                <button>Menu</button>
-            </div>
-        </div>
+        <AppBar position='fixed' color='inherit'>
+            <Toolbar>
+                <a href='/'><img src='./images/logo.png' alt='logo' className='img'></img></a>
+                <div>
+                    <input className='input'></input>
+                </div>
+                {/*
+                <div>
+                    <span>msg</span>
+                    <span>menu</span>
+                </div> */}
+            </Toolbar>
+        </AppBar>
     );
 }
 

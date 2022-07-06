@@ -8,11 +8,11 @@ function Home() {
     return (
         <div>
             <div className='header'>
-                <Header />
+                <Header/>
             </div>
             <div>
                 <main className='feed'>
-                <Feed />
+                <Feed/>
                 </main>
             </div>
         </div>
