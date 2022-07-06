@@ -26,6 +26,9 @@
     height: 100vh;
     margin: 100px;
 }
+.actionname {
+    display: flex;
+}
 .card {
     margin-bottom: 15px;
 }

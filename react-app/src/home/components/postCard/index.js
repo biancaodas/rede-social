@@ -13,14 +13,15 @@ function PostCard ( { post }) {
         <Card className="card">
             <CardHeader
             avatar={<Avatar src={post.author.avatar}/>}
-            name={<Typography variant="h6 ">{post.author.name}</Typography>}
-            subheader={<Typography variant="caption">{post.date}</Typography>
-            }/>
+            subheader={<Typography variant="h6">{post.author.name}</Typography>}
+            action={<Typography variant="caption">{post.date}</Typography>}/>
+
             <CardContent>
                 <CardMedia>
                     <img src={ post.image } alt='/'className='image'/>
                 </CardMedia>
             </CardContent>
+            
             <CardActions></CardActions>
         </Card>
     );
