@@ -8,7 +8,7 @@ function Header() {
             <Toolbar>
                 <a href='/'><img src='./images/logo.png' alt='logo' className='img'></img></a>
                 <div>
-                    <input className='input'></input>
+                    <input className='input' placeholder='Pesquisar'></input>
                 </div>
                 {/*
                 <div>
