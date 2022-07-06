@@ -6,6 +6,11 @@ import CardActions from '@mui/material/CardActions';
 import Typography from '@mui/material/Typography';
 import Avatar from "@mui/material/Avatar";
 import CardMedia from "@mui/material/CardMedia";
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import CommentIcon from '@mui/icons-material/Comment';
+import ShareIcon from '@mui/icons-material/Share';
+import IconButton from "@mui/material/IconButton";
+
 
 
 function PostCard ( { post }) {
@@ -22,7 +27,20 @@ function PostCard ( { post }) {
                 </CardMedia>
             </CardContent>
             
-            <CardActions></CardActions>
+            <CardActions disableSpacing>
+                <IconButton aria-label="like">
+                    <FavoriteIcon />
+                </IconButton>
+
+                <IconButton aria-label="comment">
+                    <CommentIcon/>
+                </IconButton>
+
+                <IconButton aria-label="share">
+                    <ShareIcon />
+                </IconButton>
+
+            </CardActions>
         </Card>
     );
 }
