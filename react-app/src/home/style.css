@@ -6,7 +6,11 @@
     width: 150px;
 }
 .input {
+    height: 50px;
+    width: 400px;
     border-radius: 15px;
+    border: white;
+    margin: 0 300px;
 }
 .icons {
     justify-content: flex-end;
@@ -18,7 +22,7 @@
     margin-left: 30px;
 }
 .avatar {
-    margin-left: 50px;
+    margin-left: 30px;
 }
 
 /*CSS FEED-HOME*/
@@ -32,9 +36,11 @@
 .card {
     margin-bottom: 15px;
 }
+
 .image {
-    height: 300px;
+    height: 430px;
     width: 100%;
     max-width: 100%;
+    border-radius: 2px;
 }
 

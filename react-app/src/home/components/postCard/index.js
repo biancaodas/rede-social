@@ -16,18 +16,19 @@ import IconButton from "@mui/material/IconButton";
 function PostCard ( { post }) {
     return(
         <Card className="card">
-            <CardHeader
+            <CardHeader className="cardHeader"
             avatar={<Avatar src={post.author.avatar}/>}
             subheader={<Typography variant="h6">{post.author.name}</Typography>}
             action={<Typography variant="caption">{post.date}</Typography>}/>
 
-            <CardContent>
+            <CardContent className="cardContent">
                 <CardMedia>
                     <img src={ post.image } alt='/'className='image'/>
                 </CardMedia>
             </CardContent>
             
             <CardActions disableSpacing>
+                
                 <IconButton aria-label="like">
                     <FavoriteIcon />
                 </IconButton>
