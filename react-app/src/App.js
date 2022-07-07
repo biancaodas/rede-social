@@ -1,5 +1,5 @@
 import React from "react";
-import Home from './home/index.js';
+import Home from './home/routes';
 
 
 function App() {

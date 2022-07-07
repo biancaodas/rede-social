@@ -30,7 +30,7 @@ function PostCard ( { post }) {
             <CardActions disableSpacing>
                 
                 <IconButton aria-label="like">
-                    <FavoriteIcon />
+                    <FavoriteIcon/>
                 </IconButton>
 
                 <IconButton aria-label="comment">
