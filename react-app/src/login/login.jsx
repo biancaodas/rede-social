@@ -3,9 +3,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fab } from '@fortawesome/free-brands-svg-icons';
 
+import './style.css';
+
 library.add(fab);
 
-function App() {
+function Login() {
   return (
     <React.Fragment>
     <div className="container">
@@ -106,4 +108,4 @@ function App() {
   );
 }
 
-export default App;
+export default Login;

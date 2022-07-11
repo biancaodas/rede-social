@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './normalize.css';
 import App from './App';
 
-import '../src/login/style.css';
+import './login/login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
