@@ -1,4 +1,3 @@
-import json
 from flask import Flask
 from flask import jsonify
 from flask import request
@@ -60,7 +59,17 @@ def delete_user(id):
     return jsonify({"mensagem": "usuário removido"}, 204)
 
 
-# '''atualiza parcialmente um usuário'''
+if __name__=='__main__':
+    app.debug = True
+    app.run()
+
+
+
+
+
+
+
+    # '''atualiza parcialmente um usuário'''
 # @app.route("/<int:id>", methods=['PATCH'])
 # def att_partly_user(id):
 #     if request.is_json:
@@ -73,10 +82,4 @@ def delete_user(id):
 #         return jsonify({"mensagem": "usuário atualizado"}, 201)
 
 #     return jsonify({"error": "a requisição precisa estar no padrão JSON"}, 415)
-
-
-
-if __name__=='__main__':
-    app.debug = True
-    app.run()
 
