@@ -1,8 +1,8 @@
 import React from 'react';
 import './style.css';
 
-import Header from './components/header';
-import Feed from './components/feed';
+import Header from './components/header/header';
+import Feed from './components/feed/feed';
 
 function Home() {
     return (

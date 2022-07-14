@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style.css';
+import '../../../home/style.css';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 

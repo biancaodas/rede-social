@@ -1,5 +1,5 @@
 import React from 'react';
-import '../style.css';
+import '../../../home/style.css';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Avatar from '@mui/material/Avatar';

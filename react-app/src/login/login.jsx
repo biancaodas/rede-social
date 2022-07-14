@@ -8,7 +8,7 @@ import './style.css';
 library.add(fab);
 
 function Login() {
-  return (
+    return (
     <React.Fragment>
     <div className="container">
         <div className="content create-content"> {/*Criar conta*/}
@@ -105,7 +105,7 @@ function Login() {
                 </div> {/*FIM FAZER LOGIN*/}
             </div> {/*fim container*/}
     </React.Fragment>
-  );
+    );
 }
 
 export default Login;
