@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useNavigate } from 'react-router-dom';
 
 import './style.css';
 
@@ -29,8 +30,9 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignIn() {
 
+export default function SignIn() {
+    const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -95,6 +97,7 @@ export default function SignIn() {
                             color='primary'
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
+                            onClick={() => navigate('/home')}
                         >
                             Entrar
                         </Button>
@@ -104,8 +107,8 @@ export default function SignIn() {
                                     Esqueceu a senha?
                                 </Link>
                             </Grid>
-                            <Grid item>
-                                <Link href="#" variant="body2">
+                            <Grid item onClick={() => navigate('/signup')}>
+                                <Link href="#" variant="body2" >
                                     {"Cadastre-se"}
                                 </Link>
                             </Grid>
