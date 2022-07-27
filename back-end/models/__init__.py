@@ -1,1 +1,0 @@
-'''módulo responsável pela camada de acesso a dados e entidades'''

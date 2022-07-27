@@ -1,1 +1,0 @@
-'''init.py é um arquivo que nos permite configurar um módulo dentro de uma subpasta do projeto'''
