@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-import Header from './components/header/header';
+import Header from './components/header/index';
 import Feed from './components/feed/feed';
 
 function Home() {

@@ -2,12 +2,10 @@ import React from 'react';
 import '../../../home/style.css';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import AddIcon from '@mui/icons-material/Add';
 import Box from '@mui/material/Box';
 import Input from '@mui/material/Input';
-import IconButton from '@mui/material/IconButton';
-
 import AccountMenu from './accountMenu';
+import NewPost from './newPost';
 
 function Header() {
     return (
@@ -21,15 +19,12 @@ function Header() {
             </Box>
 
             <Box className='icons'>
-                <IconButton aria-label="add"  color='secondary' href='/'>
-                    <AddIcon/>
-                </IconButton>
+                <NewPost/>
                 <AccountMenu/>
             </Box>
             </Toolbar>
         </AppBar>
     );
 }
-
 
 export default Header;

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Menu from '@mui/material/Menu';
@@ -7,7 +7,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-// import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useNavigate } from 'react-router-dom';
@@ -79,18 +78,7 @@ export default function AccountMenu() {
                     <Avatar /> Perfil
                 </MenuItem>
 
-                {/* <MenuItem>
-                    <Avatar /> 
-                </MenuItem> */}
-
                 <Divider />
-
-                {/* <MenuItem>
-                    <ListItemIcon>
-                    <PersonAdd fontSize="small" />
-                    </ListItemIcon>
-                        Add another account
-                </MenuItem> */}
 
                 <MenuItem>
                     <ListItemIcon>

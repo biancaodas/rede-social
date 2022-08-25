@@ -12,7 +12,6 @@ import ShareIcon from '@mui/icons-material/Share';
 import IconButton from "@mui/material/IconButton";
 
 
-
 function PostCard ( { post }) {
     return(
         <Card className="card">
@@ -21,10 +20,13 @@ function PostCard ( { post }) {
             subheader={<Typography variant="h6">{post.author.name}</Typography>}
             action={<Typography variant="caption">{post.date}</Typography>}/>
 
-            <CardContent className="cardContent">
-                <CardMedia>
-                    <img src={ post.image } alt='/'className='image'/>
-                </CardMedia>
+            <CardContent 
+                className="cardContent"
+                noWrap
+                maxWidth="md">
+                    <CardMedia>
+                        <img src={ post.image } alt='/'className='image'/>
+                    </CardMedia>
             </CardContent>
             
             <CardActions disableSpacing>
