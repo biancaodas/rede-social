@@ -1,0 +1,25 @@
+{
+    "USERS": [
+        {
+            "PutRequest": {
+                "Item": {
+                    "email": {
+                        "S": "adriana@mail.com"
+                    },
+                    "nome": {
+                        "S": "Adriana"
+                    },
+                    "sobrenome": {
+                        "S": "Rodrigues"
+                    },
+                    "user_id": {
+                        "S": "123-abc"
+                    },
+                    "status": {
+                        "BOOL": true
+                    }
+                }
+            }
+        }
+    ]
+}

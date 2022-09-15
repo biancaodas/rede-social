@@ -1,0 +1,75 @@
+service: aws-lambda
+
+plugins:
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+
+# you can overwrite defaults here
+stage: dev
+region: us-east-1
+
+iamRoleStatements:
+  - Effect: Allow
+    Action:
+      - dynamodb:Query
+      - dynamodb:Scan
+      - dynamodb:PutItem
+      - dynamodb:DeleteItem
+      - dynamodb:GetItem
+      - dynamodb:UpdateItem
+    Resource: arn:aws:dynamodb:sa-east-1:689798833081:table/USERS
+
+functions:
+  listarUsers:
+    handler: handler.listarUsers
+    events:
+      - http:
+          path: users
+          method: get
+
+  obterUser:
+    handler: handler.obterUser
+    events:
+      - http:
+          path: users/{userID}
+          method: get
+
+  cadastrarUser:
+    handler: handler.cadastrarUser
+    events:
+      - http:
+          path: users
+          method: post
+
+  atualizarUser:
+    handler: handler.atualizarUser
+    events:
+      - http:
+          path: users/{userID}
+          method: put
+
+  excluirUser:
+    handler: handler.excluirUser
+    events:
+      - http:
+          path: users/{userID}
+          method: delete
+
+resources:
+  Resources:
+    PacientesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: USERS
+        AttributeDefinitions:
+          - AttributeName: user_id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: user_id
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
