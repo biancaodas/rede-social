@@ -1,7 +1,7 @@
-import React from 'react';
+// import React from 'react';
 
-function PageNewPost() {
-    return <h1>novo post</h1>
-}
+// function PageNewPost() {
+//     return <h1>novo post</h1>
+// }
 
-export default PageNewPost;
+// export default PageNewPost;

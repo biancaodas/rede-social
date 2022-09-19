@@ -1,46 +1,49 @@
-import * as React from 'react';
+import React from "react";
+import { useNavigate } from 'react-router-dom';
+import { Auth } from 'aws-amplify';
+import { useFormFields } from "../Libs/hook";
+import { onError } from "../Libs/error";
 import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
-import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
+
 
 import './style.css';
 
-function Copyright(props) {
-    return (
-        <Typography variant="body2" color="text.secondary" align="center" {...props}>
-            {'Copyright © '}
-                <Link color="inherit" href="https://mui.com/">
-                    *****
-                </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-);
-}
-
 const theme = createTheme();
-
 
 export default function SignIn() {
     const navigate = useNavigate();
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
+    const [fields, handleFieldChange] = useFormFields({
+        email: "",
+        password: "",
+    });
+
+
+function validateForm() {
+    return fields.email.length > 0 && fields.password.length >0;
+}
+
+async function handleSubmit(event) {
+    event.preventDefault();
+
+    const { email, password } = fields; 
+
+    try {
+        await Auth.signIn(email, password);
+
+        navigate('/home');
+
+    } catch(e) {
+        onError(e);
+    }
 };
+
 
     return (
         <ThemeProvider theme={theme}>
@@ -58,14 +61,6 @@ export default function SignIn() {
                     <Box>
                         <a href='/'><img src='./images/logo.png' alt='logo' className='img_login'></img></a>
                     </Box>
-                    {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
-                    </Avatar> */}
-
-                    {/* <Typography component="h3" variant="h3">
-                        Entrar
-                    </Typography> */}
-
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
@@ -76,6 +71,8 @@ export default function SignIn() {
                             name="email"
                             autoComplete="email"
                             autoFocus
+                            value={fields.email}
+                            onChange={handleFieldChange}
                         />
                         <TextField
                             margin="normal"
@@ -86,18 +83,16 @@ export default function SignIn() {
                             type="password"
                             id="password"
                             autoComplete="current-password"
+                            value={fields.password}
+                            onChange={handleFieldChange}
                         />
-                        {/* <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        /> */}
                         <Button
                             type="submit"
                             fullWidth
                             color='primary'
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
-                            onClick={() => navigate('/home')}
+                            disabled={!validateForm()}
                         >
                             Entrar
                         </Button>
@@ -107,15 +102,14 @@ export default function SignIn() {
                                     Esqueceu a senha?
                                 </Link>
                             </Grid>
-                            <Grid item onClick={() => navigate('/signup')}>
-                                <Link href="#" variant="body2" >
-                                    {"Cadastre-se"}
+                            <Grid>
+                                <Link href="/signup" variant="body2" >
+                                    Cadastre-se
                                 </Link>
                             </Grid>
                         </Grid>
                     </Box>
                 </Box>
-                <Copyright sx={{ mt: 8, mb: 4 }} />
             </Container>
         </ThemeProvider>
 );

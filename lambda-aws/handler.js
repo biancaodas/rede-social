@@ -9,6 +9,8 @@ const params = {
     TableName: "USERS",
 };
 
+
+
 //FUNÇÃO LISTAR USUÁRIO
 module.exports.listarUsers = async (event) => {
   try {

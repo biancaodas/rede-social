@@ -1,47 +1,111 @@
-import * as React from 'react';
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+import { Auth } from 'aws-amplify';
+import { useFormFields } from "../Libs/hook";
+import { onError } from "../Libs/error";
+import Form from "react-bootstrap/Form";
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-// import FormControlLabel from '@mui/material/FormControlLabel';
-// import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-// import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useNavigate } from 'react-router-dom';
-
 import './style.css';
-
-function Copyright(props) {
-    return (
-            <Typography variant="body2" color="text.secondary" align="center" {...props}>
-                {'Copyright © '}
-                    <Link color="inherit" href="https://mui.com/">
-                        ****
-                </Link>{' '}
-                    {new Date().getFullYear()}
-                {'.'}
-            </Typography>
-);
-}
 
 const theme = createTheme();
 
 export default function SignUp() {
     const navigate = useNavigate();
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const data = new FormData(event.currentTarget);
-        console.log({
-            email: data.get('email'),
-            password: data.get('password'),
-        });
-};
+    const [newUser, setNewUser] = useState(null);
+    const [fields, handleFieldChange] = useFormFields({
+        email: "",
+        password: "",
+        confirmationCode: "",
+    });
 
-return (
+    function validateForm() {
+        return (
+            fields.email.length > 0 &&
+            fields.password.length > 0 &&
+            fields.password
+            );
+        }
+
+    function validateConfirmationForm() {
+        return fields.confirmationCode.length > 0;
+        }
+
+async function handleSubmit(event) {
+    event.preventDefault();
+
+    try {
+        const novoUsuario = await Auth.signUp({
+            username: fields.email,
+            password: fields.password,
+            attributes: {
+                name: fields.name
+            }
+        });
+
+        setNewUser(novoUsuario);
+    } catch(e) {
+        if (e.code === "UsernameExistsException") {
+            const retentativa = await Auth.resendSignUp(fields.email);
+        setNewUser({
+            newUser: retentativa
+        });
+        } else {
+            onError(e);
+        }
+    }
+}
+
+async function handleConfirmationSubmit(event) {
+    event.preventDefault();
+
+    try {
+        await Auth.confirmSignUp(fields.email, fields.confirmationCode);
+        await Auth.signIn(fields.email, fields.password);
+
+        navigate('/home');
+
+    } catch (e) {
+        onError(e);
+    }
+}
+
+function renderConfirmationForm() {
+    return (
+        <Form  onSubmit={handleConfirmationSubmit}>
+            <Form.Group controlId="confirmationCode" size="lg">
+                <Form.Label>Código de Confirmação</Form.Label>
+                <Form.Control
+                    autoFocus
+                    type="tel"
+                    onChange={handleFieldChange}
+                    value={fields.confirmationCode}
+                />
+                <Form.Text muted>
+                    O código foi enviado para o e-mail cadastrado
+                </Form.Text>
+            </Form.Group>
+            <Button
+                block
+                size="lg"
+                type="submit"
+                variant="success"
+                disabled={!validateConfirmationForm()}
+            >
+            Verificar
+            </Button>
+        </Form>
+    );
+}
+
+function renderForm() {  
+    return (
     <ThemeProvider theme={theme}>
         <Container component="main" maxWidth="xs">
             <CssBaseline />
@@ -57,35 +121,20 @@ return (
                     <Box>
                         <a href='/'><img src='./images/logo.png' alt='logo' className='img_login'></img></a>
                     </Box>
-                {/* <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                    <LockOutlinedIcon />
-                </Avatar> */}
-
-                {/* <Typography component="h1" variant="h5">
-                    Cadastre-se
-                </Typography> */}
-
                 <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
                     <Grid container spacing={2}>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item xs={12}>
                             <TextField
                                 autoComplete="given-name"
                                 name="firstName"
                                 required
                                 fullWidth
                                 id="firstName"
-                                label="Nome"
+                                label="Nome Completo"
                                 autoFocus
-                            />
-                        </Grid>
-                        <Grid item xs={12} sm={6}>
-                            <TextField
-                                required
-                                fullWidth
-                                id="lastName"
-                                label="Sobrenome"
-                                name="lastName"
-                                autoComplete="family-name"
+                                value={fields.name}
+                                onChange={handleFieldChange}
+                                
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -96,6 +145,8 @@ return (
                             label="E-mail"
                             name="email"
                             autoComplete="email"
+                            value={fields.email}
+                            onChange={handleFieldChange}
                             />
                         </Grid>
                         <Grid item xs={12}>
@@ -107,14 +158,10 @@ return (
                                 type="password"
                                 id="password"
                                 autoComplete="new-password"
+                                value={fields.password}
+                                onChange={handleFieldChange}
                             />
                         </Grid>
-                        {/* <Grid item xs={12}>
-                            <FormControlLabel
-                                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                                label="I want to receive inspiration, marketing promotions and updates via email."
-                            />
-                        </Grid> */}
                     </Grid>
 
                     <Button
@@ -122,7 +169,7 @@ return (
                         fullWidth
                         variant="contained"
                         sx={{ mt: 3, mb: 2 }}
-                        onClick={() => navigate('/home')}
+                        disable={!validateForm()}
                     >
                         Cadastrar
                     </Button>
@@ -136,8 +183,15 @@ return (
                     </Grid>
                 </Box>
             </Box>
-            <Copyright sx={{ mt: 5 }} />
         </Container>
     </ThemeProvider>
 );
+}
+
+return (
+    <div className="Signup">
+    {newUser === null ? renderForm() : renderConfirmationForm()}
+    </div>
+);
+
 }
